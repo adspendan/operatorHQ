@@ -15,7 +15,7 @@ export function PromoBanner() {
     if (!isVisible || pathname === "/ai-assistant") return null
 
     return (
-        <div className="relative z-50 bg-[#050810] text-white overflow-hidden border-b border-white/10">
+        <div className="relative z-50 bg-[#050810] text-white border-b border-white/10">
             <div className="container mx-auto px-4 h-12 flex items-center justify-center relative">
                 <Link
                     href="/ai-assistant"
@@ -43,10 +43,10 @@ export function PromoBanner() {
                         <AnimatePresence>
                             {isHovered && (
                                 <motion.div
-                                    initial={{ opacity: 0, scale: 0.8, y: 10, x: -50 }}
-                                    animate={{ opacity: 1, scale: 1, y: -20, x: 0 }}
-                                    exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                                    className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-cyan-500 text-[#050810] text-[10px] font-bold px-2 py-0.5 rounded-full pointer-events-none"
+                                    initial={{ opacity: 0, scale: 0.8, y: -5 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.8, y: -5 }}
+                                    className="absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-cyan-500 text-[#050810] text-[10px] font-bold px-2 py-0.5 rounded-full pointer-events-none z-[100]"
                                 >
                                     EXFOLIATE!
                                 </motion.div>

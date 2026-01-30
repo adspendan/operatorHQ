@@ -9,20 +9,21 @@ export function InteractiveAvatar() {
 
     return (
         <div
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center pointer-events-auto"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => setIsHovered(!isHovered)} // Handle tap on mobile
         >
             <div className="relative mb-6">
-                {/* Blue Glow on Hover */}
+                {/* Blue Glow on Hover - Reduced intensity for mobile/blockiness fix */}
                 <AnimatePresence>
                     {isHovered && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1.5 }}
-                            exit={{ opacity: 0, scale: 0.5 }}
-                            className="absolute inset-0 bg-cyan-500/40 blur-[40px] rounded-full z-0"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1.2 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.3 }}
+                            className="absolute inset-0 bg-cyan-500/30 blur-[30px] rounded-full -z-10"
                         />
                     )}
                 </AnimatePresence>
@@ -30,8 +31,8 @@ export function InteractiveAvatar() {
                 {/* Avatar */}
                 <motion.div
                     animate={isHovered ? {
-                        y: [0, -5, 5, -5, 5, 0], // Shiver/Wiggle
-                        rotate: [0, -5, 5, 0]
+                        y: [0, -2, 2, -2, 2, 0], // Subtle Shiver (Reduced from 5)
+                        rotate: [0, -2, 2, 0]    // Subtle Rotate (Reduced from 5)
                     } : {
                         y: [0, -15, 0] // Gentle Float
                     }}
@@ -65,10 +66,17 @@ export function InteractiveAvatar() {
                             animate={{
                                 opacity: 1,
                                 y: 0,
-                                x: [-1, 1, -1, 1, 0] // Shiver Text
+                                x: [-1, 1, -1, 1, 0]
                             }}
                             exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{
+                                x: {
+                                    duration: 0.2,
+                                    repeat: Infinity, // Continuous Shiver
+                                    repeatType: "mirror"
+                                },
+                                opacity: { duration: 0.2 }
+                            }}
                             className="text-cyan-400 font-bold text-xl md:text-2xl tracking-widest uppercase glow-cyan"
                             style={{ textShadow: "0 0 20px rgba(6,182,212,0.8)" }}
                         >
