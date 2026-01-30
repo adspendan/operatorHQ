@@ -25,6 +25,39 @@ export const medspaUseCase: UseCase = {
         ],
         notIncluded: "What it intentionally does NOT include: Treatment-specific contraindication screening, provider- or room-aware scheduling logic, lifecycle follow-ups, memberships, or retention orchestration, or cross-system coordination. The Foundation Package establishes ownership, privacy, and local execution — it is the on-ramp, not the full system."
     },
+        deploymentSwarm: {
+        architecture: [
+            {
+                name: "Intake Specialist",
+                role: "Voice HQ",
+                capabilities: ["Call Qualification", "Inquiry Triage", "After-Hours Coverage"]
+            },
+            {
+                name: "Routing Manager",
+                role: "Ops HQ",
+                capabilities: ["Task Prioritization", "Resource Allocation", "Context Handover"]
+            },
+            {
+                name: "Engagement Lead",
+                role: "Marketing HQ",
+                capabilities: ["Follow-Up Sequences", "Review Generation", "Client Updates"]
+            },
+            {
+                name: "Policy Expert",
+                role: "Knowledge HQ",
+                capabilities: ["SOP Retrieval", "Compliance Checks", "Staff Guidance"]
+            }
+        ],
+        flow: {
+            trigger: "Inbound inquiry received via phone or web",
+            steps: [
+                { agent: "Intake Specialist", action: "Qualifies intent and gathers core requirements." },
+                { agent: "Policy Expert", action: "Checks internal SOPs for case-specific compliance." },
+                { agent: "Routing Manager", action: "Assigns to appropriate department with full context." },
+                { agent: "Engagement Lead", action: "Schedules automated follow-up sequence." }
+            ]
+        }
+    },
     expansionPath: [
         {
             tier: "HQ Pro",

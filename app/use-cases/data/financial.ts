@@ -24,6 +24,39 @@ export const financialUseCase: UseCase = {
         ],
         notIncluded: "Investment advice or recommendations. Portfolio analysis or performance projections. Account access, execution, or custodial integrations. The Foundation Package stops missed opportunities and ensures professionalism — it is the on-ramp, not the advisory engine."
     },
+        deploymentSwarm: {
+        architecture: [
+            {
+                name: "Intake Specialist",
+                role: "Voice HQ",
+                capabilities: ["Call Qualification", "Inquiry Triage", "After-Hours Coverage"]
+            },
+            {
+                name: "Routing Manager",
+                role: "Ops HQ",
+                capabilities: ["Task Prioritization", "Resource Allocation", "Context Handover"]
+            },
+            {
+                name: "Engagement Lead",
+                role: "Marketing HQ",
+                capabilities: ["Follow-Up Sequences", "Review Generation", "Client Updates"]
+            },
+            {
+                name: "Policy Expert",
+                role: "Knowledge HQ",
+                capabilities: ["SOP Retrieval", "Compliance Checks", "Staff Guidance"]
+            }
+        ],
+        flow: {
+            trigger: "Inbound inquiry received via phone or web",
+            steps: [
+                { agent: "Intake Specialist", action: "Qualifies intent and gathers core requirements." },
+                { agent: "Policy Expert", action: "Checks internal SOPs for case-specific compliance." },
+                { agent: "Routing Manager", action: "Assigns to appropriate department with full context." },
+                { agent: "Engagement Lead", action: "Schedules automated follow-up sequence." }
+            ]
+        }
+    },
     expansionPath: [
         {
             tier: "HQ Pro",

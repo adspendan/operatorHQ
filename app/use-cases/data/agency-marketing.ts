@@ -24,6 +24,39 @@ export const agencyMarketingUseCase: UseCase = {
         ],
         notIncluded: "What it intentionally does NOT include: Strategic recommendations or channel allocation. Campaign execution or content creation. Performance guarantees or growth predictions. Pricing decisions or scope commitments. The Foundation Package establishes intake clarity — it doesn't replace marketing strategy expertise."
     },
+        deploymentSwarm: {
+        architecture: [
+            {
+                name: "Intake Specialist",
+                role: "Voice HQ",
+                capabilities: ["Call Qualification", "Inquiry Triage", "After-Hours Coverage"]
+            },
+            {
+                name: "Routing Manager",
+                role: "Ops HQ",
+                capabilities: ["Task Prioritization", "Resource Allocation", "Context Handover"]
+            },
+            {
+                name: "Engagement Lead",
+                role: "Marketing HQ",
+                capabilities: ["Follow-Up Sequences", "Review Generation", "Client Updates"]
+            },
+            {
+                name: "Policy Expert",
+                role: "Knowledge HQ",
+                capabilities: ["SOP Retrieval", "Compliance Checks", "Staff Guidance"]
+            }
+        ],
+        flow: {
+            trigger: "Inbound inquiry received via phone or web",
+            steps: [
+                { agent: "Intake Specialist", action: "Qualifies intent and gathers core requirements." },
+                { agent: "Policy Expert", action: "Checks internal SOPs for case-specific compliance." },
+                { agent: "Routing Manager", action: "Assigns to appropriate department with full context." },
+                { agent: "Engagement Lead", action: "Schedules automated follow-up sequence." }
+            ]
+        }
+    },
     expansionPath: [
         {
             tier: "HQ Pro",

@@ -25,6 +25,39 @@ export const decisionhqUseCase: UseCase = {
         ],
         notIncluded: "What it explicitly does NOT include: Recommendations presented as guarantees. Advisory services or professional counsel. Outcome prediction or optimization. Decision authority — all decisions remain human-led."
     },
+        deploymentSwarm: {
+        architecture: [
+            {
+                name: "Intake Specialist",
+                role: "Voice HQ",
+                capabilities: ["Call Qualification", "Inquiry Triage", "After-Hours Coverage"]
+            },
+            {
+                name: "Routing Manager",
+                role: "Ops HQ",
+                capabilities: ["Task Prioritization", "Resource Allocation", "Context Handover"]
+            },
+            {
+                name: "Engagement Lead",
+                role: "Marketing HQ",
+                capabilities: ["Follow-Up Sequences", "Review Generation", "Client Updates"]
+            },
+            {
+                name: "Policy Expert",
+                role: "Knowledge HQ",
+                capabilities: ["SOP Retrieval", "Compliance Checks", "Staff Guidance"]
+            }
+        ],
+        flow: {
+            trigger: "Inbound inquiry received via phone or web",
+            steps: [
+                { agent: "Intake Specialist", action: "Qualifies intent and gathers core requirements." },
+                { agent: "Policy Expert", action: "Checks internal SOPs for case-specific compliance." },
+                { agent: "Routing Manager", action: "Assigns to appropriate department with full context." },
+                { agent: "Engagement Lead", action: "Schedules automated follow-up sequence." }
+            ]
+        }
+    },
     expansionPath: [
         {
             tier: "HQ Pro",
